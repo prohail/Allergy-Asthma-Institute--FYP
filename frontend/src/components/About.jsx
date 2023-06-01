@@ -6,7 +6,7 @@ export default function About() {
       <div className="col-md-1"></div>
       <div className="col">
         <div className="my-4">
-          <h1 className="display-4 fw-bold px-md-3 py-1">About Us</h1>
+          <h2 className="display-5 fw-bold px-md-3 py-1">About Us</h2>
           <p className="fs-5">
             The Allergy and Asthma Institute is for the Allergy and Asthma
             Patients and this institute also works on the WHO projects. Dr Osman
@@ -21,6 +21,7 @@ export default function About() {
             art allergy diagnostic and treatment facilities for all types of
             allergic diseases.
           </p>
+          <br />
           <div className="treat p-1">
             <h3 className="display-6 fw-bold px-md-3 pt-3">Our Mission</h3>
             <p className="fs-5">
@@ -34,6 +35,7 @@ export default function About() {
               the most advanced care possible.
             </p>
           </div>
+          <br />
           <h3 className="display-6 fw-bold px-md-3 pt-3">Our Services</h3>
           <p className="fs-5">
             At Allergy and Asthma Institute Pakistan, we offer a wide range of
@@ -46,9 +48,10 @@ export default function About() {
             plans that address their unique needs and concerns.
           </p>
         </div>
+        <br />
 
         <div className="treat p-1">
-          <h1 className="display-6 fw-bold px-md-3 pt-3">About Allergy</h1>
+          <h2 className="display-6 fw-bold px-md-3 pt-3">About Allergy</h2>
           <p className="fs-5">
             Certainly! Allergies are a common health condition that affects
             millions of people worldwide. An allergy is an immune system
@@ -64,9 +67,10 @@ export default function About() {
             breathing.
           </p>
         </div>
+        <br />
 
         <div className="my-4">
-          <h1 className="display-6 fw-bold px-md-3 pt-3">About Asthma</h1>
+          <h2 className="display-6 fw-bold px-md-3 pt-3">About Asthma</h2>
           <p className="fs-5">
             Asthma is a chronic respiratory condition that affects the airways,
             causing them to become inflamed and narrowed, which makes it
@@ -80,6 +84,7 @@ export default function About() {
             morning.
           </p>
         </div>
+        <br />
       </div>
       <div className="col-md-1"></div>
     </div>

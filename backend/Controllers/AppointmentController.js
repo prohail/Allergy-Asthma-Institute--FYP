@@ -5,20 +5,41 @@ const mongoose = require("mongoose");
 const GetAllAppointments = async (req, res) => {
   const resPerPage = 5;
   const page = req.query.page || 1;
-  const appointments = await Appointment.find()
-    .sort({ createdAt: -1 })
-    .skip(resPerPage * page - resPerPage)
-    .limit(resPerPage);
-  const numTotal = await Appointment.count();
-  const obj = {
-    Perpage: resPerPage,
-    page: page,
-    Total: numTotal,
-    Data: appointments,
-  };
+  if (req.user.isAdmin) {
+    const appointments = await Appointment.find()
+      .sort({ createdAt: -1 })
+      .skip(resPerPage * page - resPerPage)
+      .limit(resPerPage);
 
-  const pageState = await paginate(obj);
-  res.status(200).json(pageState);
+    const numTotal = await Appointment.count();
+    const obj = {
+      Perpage: resPerPage,
+      page: page,
+      Total: numTotal,
+      Data: appointments,
+    };
+
+    const pageState = await paginate(obj);
+    res.status(200).json(pageState);
+  }
+  if (!req.user.isAdmin) {
+    const userID = req.user._id;
+    const appointments = await Appointment.find({ userID })
+      .sort({ createdAt: -1 })
+      .skip(resPerPage * page - resPerPage)
+      .limit(resPerPage);
+
+    const numTotal = await Appointment.count();
+    const obj = {
+      Perpage: resPerPage,
+      page: page,
+      Total: numTotal,
+      Data: appointments,
+    };
+
+    const pageState = await paginate(obj);
+    res.status(200).json(pageState);
+  }
 };
 const paginate = async (req) => {
   const prev = req.page * 1 - 1 == 0 ? null : req.page * 1 - 1;
@@ -52,9 +73,13 @@ const GetSingleAppointment = async (req, res) => {
 
 //Create new Appointment
 const CreateAppointment = async (req, res) => {
-  const { branch, status, patient, doctor, e_mail, phone, prefDate } = req.body;
+  const { branch, status, doctor, prefDate } = req.body;
 
   try {
+    const userID = req.user._id;
+    const patient = req.user.name;
+    const e_mail = req.user.email;
+    const phone = req.user.phone;
     const appointment = await Appointment.create({
       branch,
       status,
@@ -63,6 +88,7 @@ const CreateAppointment = async (req, res) => {
       e_mail,
       phone,
       prefDate,
+      userID,
     });
     res.status(200).json(appointment);
   } catch (error) {

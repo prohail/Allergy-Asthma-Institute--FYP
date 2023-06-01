@@ -11,9 +11,9 @@ export default function Home() {
     <>
       <div className="px-2 my-5 px-md-5 row">
         <div className="col-md-7 text-center col-12">
-          <h1 className="display-3 fw-bold p-3">
+          <h2 className="display-4 fw-bold p-3">
             The Allergy & Asthma Institute
-          </h1>
+          </h2>
           <p className="p-3 fs-5 fw-normal">
             The Allergy and Asthma Institute is for the Allergy and Asthma
             Patients and this institute also works on the WHO projects. Dr Osman
@@ -38,9 +38,9 @@ export default function Home() {
       <div className="treat row p-2 p-md-5 pb-5 m-md-5 m-2">
         <div className="col-md-1"></div>
         <div className="col-12 col-md-7">
-          <h1 className="display-5 fw-bold px-3 py-1 mt-3">
+          <h2 className="display-6 fw-bold px-3 py-1 mt-3">
             How we treat our Patients?
-          </h1>
+          </h2>
           <p className="p-3 fs-5 fw-normal">
             All patients attending our Islamabad or Lahore clinics are carefully
             evaluated with a detailed clinical history and a relevant physical
@@ -72,9 +72,9 @@ export default function Home() {
         </div>
         <div className="col-md-1"></div>
         <div className="col-md-7">
-          <h1 className="display-5 fw-bold px-3 py-1 mt-5">
+          <h2 className="display-6 fw-bold px-3 py-1 mt-5">
             Why do we perform Allergy Testing?
-          </h1>
+          </h2>
           <p className="p-3 fs-5 fw-normal">
             In Case a Simple trial of pharmacological treatment (Medicine) is
             unsuccessful,only then do we plan to advise or perform further
@@ -86,9 +86,9 @@ export default function Home() {
       <div className="treat row p-2 p-md-5 pb-5 m-md-5 m-2">
         <div className="col-md-1"></div>
         <div className="col-12 col-md-7">
-          <h1 className="display-5 fw-bold px-3 py-1 mt-3">
+          <h2 className="display-6 fw-bold px-3 py-1 mt-3">
             What type of allergy testing do we perform?
-          </h1>
+          </h2>
           <p className="p-3 fs-5 fw-normal">
             The type of allergy testing depends on the history, symptoms,
             location, environment and life style of the patient. <br /> <br />
@@ -119,9 +119,9 @@ export default function Home() {
         </div>
         <div className="col-md-1"></div>
         <div className="col-md-7">
-          <h1 className="display-5 fw-bold px-3 py-1 mt-5">
+          <h2 className="display-6 fw-bold px-3 py-1 mt-5">
             What type of treatment do we provide?
-          </h1>
+          </h2>
           <p className="p-3 fs-5 fw-normal">
             Once an allergy test is suggestive of any specific substance causing
             the symptoms of the allergy, appropriate preventative and treatment

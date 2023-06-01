@@ -28,10 +28,7 @@ export default function Navbartop() {
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Link style={{ textDecoration: "none" }} to="/">
-                <span className="fs-5 px-2 nav-link">Home</span>
-              </Link>
+            <Nav className="me-auto ms-5">
               <Link style={{ textDecoration: "none" }} to="/doctors">
                 <span className="fs-5 px-2 nav-link">Doctors</span>
               </Link>

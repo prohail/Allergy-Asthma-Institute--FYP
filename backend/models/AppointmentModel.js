@@ -30,6 +30,10 @@ const appointmentSchema = new Schema(
       type: Date,
       required: true,
     },
+    userID: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
