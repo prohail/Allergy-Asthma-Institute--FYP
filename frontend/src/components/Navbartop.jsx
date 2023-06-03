@@ -44,6 +44,13 @@ export default function Navbartop() {
               <Link style={{ textDecoration: "none" }} to="/about">
                 <span className="fs-5 px-2 nav-link">About</span>
               </Link>
+              {user && user.user.isAdmin && (
+                <Link style={{ textDecoration: "none" }} to="/records">
+                  <span className="fs-5 text-success px-5 nav-link">
+                    Patient Records
+                  </span>
+                </Link>
+              )}
             </Nav>
             <Nav>
               {!user && (

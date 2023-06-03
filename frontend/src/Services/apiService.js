@@ -26,7 +26,19 @@ const apiService = {
       throw error;
     }
   },
-  // Add more API methods as needed
+  getAllRecords: async (page, { user }) => {
+    try {
+      const response = await axios.get(`/api/records?page=${page}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching records:", error);
+      throw error;
+    }
+  },
 };
 
 export default apiService;

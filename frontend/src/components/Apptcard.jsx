@@ -96,22 +96,24 @@ export default function Apptcard({ appts, setAppts }) {
                 </div>
               </Card.Body>
             </Card.Body>
-            <div className="d-flex my-1 mx-md-auto">
-              <Button
-                onClick={() => markBooked(appt._id)}
-                className="py-2 m-1"
-                variant="primary"
-              >
-                Mark as Booked
-              </Button>
-              <Button
-                onClick={() => markCompleted(appt._id)}
-                className="py-2 m-1"
-                variant="success"
-              >
-                Mark as Completed
-              </Button>
-            </div>
+            {user.user.isAdmin && (
+              <div className="d-flex my-1 mx-md-auto">
+                <Button
+                  onClick={() => markBooked(appt._id)}
+                  className="py-2 m-1"
+                  variant="primary"
+                >
+                  Mark as Booked
+                </Button>
+                <Button
+                  onClick={() => markCompleted(appt._id)}
+                  className="py-2 m-1"
+                  variant="success"
+                >
+                  Mark as Completed
+                </Button>
+              </div>
+            )}
           </Card>
         ))}
     </>

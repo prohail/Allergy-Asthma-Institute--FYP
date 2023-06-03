@@ -13,6 +13,7 @@ import Appointmentslist from "./components/Appointmentslist";
 import Publications from "./components/Publications";
 import Teachings from "./components/Teachings";
 import { useAuthContext } from "./hooks/useAuthContext";
+import Records from "./components/Records";
 
 function App() {
   const { user } = useAuthContext();
@@ -36,6 +37,8 @@ function App() {
           path="/login"
           element={!user ? <LoginPage /> : <Navigate to="/" />}
         />
+        <Route path="/records" element={<Records />} />
+
         <Route
           path="/signup"
           element={!user ? <SignupPage /> : <Navigate to="/" />}

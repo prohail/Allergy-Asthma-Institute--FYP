@@ -7,11 +7,14 @@ export default function Appointment() {
   const [pdoc, setdoc] = useState("NoDoc");
   const [pbranch, setbranch] = useState("NoBranch");
   const [pdate, setdate] = useState("");
+  const [isloading, setisloading] = useState(false);
+  const [msg, setmsg] = useState(null);
 
   const { user } = useAuthContext();
 
   const handlesubmit = (e) => {
     e.preventDefault();
+    setisloading(true);
     axios
       .post(
         "/api/appointments",
@@ -32,7 +35,8 @@ export default function Appointment() {
       .catch(function (error) {
         console.log(error);
       });
-
+    setisloading(false);
+    setmsg("Request Recieved");
     setbranch("NoBranch");
     setdate("");
     setdoc("NoDoc");
@@ -52,61 +56,81 @@ export default function Appointment() {
             <h6 className="text-center fw-light pt-2 fs-5">
               Your Appointment will be confirmed subject to Availability
             </h6>
-
-            <form onSubmit={handlesubmit} className="mx-auto pb-5 pt-3">
-              <select
-                className="w-75 form-select border-bottom my-2 border-0 border-secondary mx-auto fs-5 px-3 py-3"
-                placeholder="Select a Doctor"
-                onChange={(e) => {
-                  setdoc(e.target.value);
+            {msg && (
+              <span
+                onClick={() => {
+                  setmsg(null);
                 }}
-                required
-                value={pdoc}
-                type="select"
+                className="text-success pt-4 w-100"
               >
-                <option value="NoDoc" selected disabled>
-                  Select a Doctor
-                </option>
-                <option value="Dr. Osman Yousuf">Dr. Osman Yousuf</option>
-                <option value="Dr. Shahida Ashraf">Dr. Shahida Ashraf</option>
-                <option value="Dr. Tanveer Anjum">Dr. Tanveer Anjum</option>
-              </select>
-
-              <select
-                className="w-75 form-select border-bottom my-2 border-0 border-secondary mx-auto fs-5 px-3 py-3"
-                placeholder="Select Branch"
-                onChange={(e) => {
-                  setbranch(e.target.value);
-                }}
-                required
-                value={pbranch}
-                type="select"
-              >
-                <option value="NoBranch" selected disabled>
-                  Select a Branch
-                </option>
-                <option value="Islamabad">Islamabad</option>
-                <option value="Lahore">Lahore</option>
-                <option value="Karachi">Karach (Affiliated Center)</option>
-              </select>
-
-              <input
-                className="w-75 border-bottom my-2 border-0 border-secondary fs-5 px-3 py-3"
-                placeholder="Select Preffered Date"
-                onChange={(e) => {
-                  setdate(e.target.value);
-                }}
-                required
-                type="date"
-                value={pdate}
-              />
-
-              <input
-                className="btn mt-5 btn-primary w-75 rounded-5 fs-4 py-3"
-                type="submit"
-                value="Send Request"
-              />
-            </form>
+                <h2>{msg}</h2>
+              </span>
+            )}
+            {!isloading && (
+              <form onSubmit={handlesubmit} className="mx-auto pb-5 pt-3">
+                <select
+                  className="w-75 form-select border-bottom my-2 border-0 border-secondary mx-auto fs-5 px-3 py-3"
+                  placeholder="Select a Doctor"
+                  onChange={(e) => {
+                    setdoc(e.target.value);
+                  }}
+                  required
+                  value={pdoc}
+                  type="select"
+                >
+                  <option value="NoDoc" selected disabled>
+                    Select a Doctor
+                  </option>
+                  <option value="Dr. Osman Yousuf">Dr. Osman Yousuf</option>
+                  <option value="Dr. Shahida Ashraf">Dr. Shahida Ashraf</option>
+                  <option value="Dr. Tanveer Anjum">Dr. Tanveer Anjum</option>
+                </select>
+                <select
+                  className="w-75 form-select border-bottom my-2 border-0 border-secondary mx-auto fs-5 px-3 py-3"
+                  placeholder="Select Branch"
+                  onChange={(e) => {
+                    setbranch(e.target.value);
+                  }}
+                  required
+                  value={pbranch}
+                  type="select"
+                >
+                  <option value="NoBranch" selected disabled>
+                    Select a Branch
+                  </option>
+                  <option value="Islamabad">Islamabad</option>
+                  <option value="Lahore">Lahore</option>
+                  <option value="Karachi">Karach (Affiliated Center)</option>
+                </select>
+                <input
+                  className="w-75 border-bottom my-2 border-0 border-secondary fs-5 px-3 py-3"
+                  placeholder="Select Preffered Date"
+                  onChange={(e) => {
+                    setdate(e.target.value);
+                  }}
+                  required
+                  type="date"
+                  value={pdate}
+                />
+                <input
+                  className="btn mt-5 btn-primary w-75 rounded-5 fs-4 py-3"
+                  type="submit"
+                  value="Send Request"
+                />{" "}
+              </form>
+            )}
+            {isloading && (
+              <div className="dot-spinner mx-auto my-5">
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+                <div className="dot-spinner__dot"></div>
+              </div>
+            )}
           </>
         )}
         {!user && (

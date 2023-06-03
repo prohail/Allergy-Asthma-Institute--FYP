@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const AppointmentRoutes = require("../backend/routes/AppointmentRoutes");
 const userRoutes = require("../backend/routes/userRoutes");
+const recordRoutes = require("../backend/routes/recordRoutes");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use("/api/appointments", AppointmentRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/records", recordRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)

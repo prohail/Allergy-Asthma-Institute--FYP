@@ -56,7 +56,17 @@ export default function Appointmentlist() {
               <div className="dot-spinner__dot"></div>
             </div>
           )}
-          <Apptcard appts={appts} setAppts={setAppts} />
+          {!isloading && (
+            <>
+              <button
+                className="btn btn-outline-dark"
+                onClick={() => window.location.reload()}
+              >
+                <h6 className="display-7 text-start">Reload</h6>
+              </button>
+              <Apptcard appts={appts} setAppts={setAppts} />
+            </>
+          )}
         </div>
         {!user && (
           <div className="alert alert-warning text-center my-5 py-5">
@@ -88,6 +98,14 @@ export default function Appointmentlist() {
             </button>
           )}
         </div>
+        {isloading && (
+          <div className="alert mx-auto text-center w-25 alert-warning">
+            <p>
+              If loading takes too long,
+              <br /> log in again
+            </p>
+          </div>
+        )}
       </div>
       <div className="col-md-1"></div>
     </div>
