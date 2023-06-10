@@ -14,6 +14,8 @@ export default function ShowRecords({ record, setrecord }) {
               <Card.Body className="row">
                 <div className="col-10">
                   <Card.Text>
+                    <strong className="my-1">Patient ID: </strong>
+                    {rec.userID} <br />
                     <strong className="my-1">Branch: </strong>
                     {rec.branch} <br />
                     <strong className="my-1">Doctor: </strong> {rec.doctor}{" "}
