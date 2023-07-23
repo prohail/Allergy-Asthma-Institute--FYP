@@ -33,4 +33,14 @@ const signupuser = async (req, res) => {
   }
 };
 
-module.exports = { loginuser, signupuser };
+// Find Patients
+const findPatients = async (req, res) => {
+  try {
+    const patients = await User.find({ isAdmin: false });
+    res.status(200).json(patients);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+module.exports = { loginuser, signupuser, findPatients };

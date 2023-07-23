@@ -10,10 +10,10 @@ import SignupPage from "./components/SignupPage";
 import Footbar from "./components/Footbar";
 import About from "./components/About";
 import Appointmentslist from "./components/Appointmentslist";
-import Publications from "./components/Publications";
 import Teachings from "./components/Teachings";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Records from "./components/Records";
+import Patients from "./components/Patients";
 
 function App() {
   const { user } = useAuthContext();
@@ -27,8 +27,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/clinics" element={<Clinics />} />
         <Route path="/teachings" element={<Teachings />} />
-        <Route path="/research" element={<Publications />} />
         <Route path="/doctors" element={<Doctors />} />
+        <Route path="/patients" element={<Patients />} />
         <Route
           path="/appointment"
           element={user ? <Appointment /> : <LoginPage />}

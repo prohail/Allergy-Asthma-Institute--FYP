@@ -3,6 +3,7 @@ import logo from "./../assets/logo.png";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import { useLogOut } from "../hooks/useLogOut";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -35,8 +36,8 @@ export default function Navbartop() {
               <Link style={{ textDecoration: "none" }} to="/clinics">
                 <span className="fs-5 px-2 nav-link">Clinics</span>
               </Link>
-              <Link style={{ textDecoration: "none" }} to="/research">
-                <span className="fs-5 px-2 nav-link">Research</span>
+              <Link style={{ textDecoration: "none" }} to="/appts">
+                <span className="fs-5 px-2 nav-link">Appointments</span>
               </Link>
               <Link style={{ textDecoration: "none" }} to="/teachings">
                 <span className="fs-5 px-2 nav-link">Teachings</span>
@@ -45,11 +46,26 @@ export default function Navbartop() {
                 <span className="fs-5 px-2 nav-link">About</span>
               </Link>
               {user && user.user.isAdmin && (
-                <Link style={{ textDecoration: "none" }} to="/records">
-                  <span className="fs-5 text-success px-5 nav-link">
-                    Patient Records
-                  </span>
-                </Link>
+                <Dropdown className="mt-1 mx-3">
+                  <Dropdown.Toggle
+                    variant="outline-success"
+                    id="dropdown-basic"
+                  >
+                    Admin
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Link style={{ textDecoration: "none" }} to="/records">
+                      <Dropdown.Item href="/">Patient Records</Dropdown.Item>{" "}
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to="/appts">
+                      <Dropdown.Item href="/">Appointments</Dropdown.Item>{" "}
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to="/patients">
+                      <Dropdown.Item href="/">Patient Data</Dropdown.Item>{" "}
+                    </Link>
+                  </Dropdown.Menu>
+                </Dropdown>
               )}
             </Nav>
             <Nav>
